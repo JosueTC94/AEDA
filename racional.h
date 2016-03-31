@@ -35,6 +35,7 @@ public:
 	  const Entero toEntero() const;
 	  const Real toReal() const;
 	  const Racional toRacional() const;
+		const Complejo toComplejo() const;
 
 	  Numero& operator+(const Numero &b) const;
 	  Numero& operator-(const Numero &b) const;

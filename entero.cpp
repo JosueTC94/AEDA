@@ -1,6 +1,7 @@
 #include "entero.h"
 #include "real.h"
 #include "racional.h"
+#include "complejo.h"
 
 #include <cstdlib>
 #include <assert.h>
@@ -46,6 +47,11 @@ const Racional Entero::toRacional() const
     return Racional(this->valor,1);
 }
 
+const Complejo Entero::toComplejo() const
+{
+    return Complejo(this->valor,0);
+}
+
 //Escribe una Numero al flujo sout
 ostream& Entero::toStream(ostream& sout) const
 {
@@ -64,7 +70,6 @@ istream& Entero::fromStream(istream& sin)
 
 Numero& Entero::operator+(const Numero &b) const
 {
-    cout << "Sumando:" << b << endl;
     Entero auxiliar = b.toEntero();
     return *(new Entero(valor+auxiliar.valor));
 }

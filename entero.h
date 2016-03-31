@@ -12,6 +12,7 @@ using namespace std;
 
 class Real;
 class Racional;
+class Complejo;
 
 class Entero: public Numero
 {
@@ -32,6 +33,7 @@ class Entero: public Numero
     const Entero toEntero() const;
     const Real toReal() const;
     const Racional toRacional() const;
+    const Complejo toComplejo() const;
 
 
     //const Racional toRacional() const;

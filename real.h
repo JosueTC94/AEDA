@@ -9,6 +9,7 @@ using namespace std;
 
 class Entero;
 class Racional;
+class Complejo;
 
 class Real: public Numero
 {
@@ -29,7 +30,7 @@ class Real: public Numero
     const Entero toEntero() const;
     const Real toReal() const;
     const Racional toRacional() const;
-    //const Complejo toComplejo() const;
+    const Complejo toComplejo() const;
 
 
     //Escribe una Numero al flujo sout

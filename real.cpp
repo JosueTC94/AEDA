@@ -1,6 +1,7 @@
 #include "real.h"
 #include "entero.h"
 #include "racional.h"
+#include "complejo.h"
 
 #include <cstdlib>
 #include <assert.h>
@@ -48,6 +49,18 @@ const Racional Real::toRacional() const
   //try catch --> El numerador pierde precisión pasando de real a entero
   return Racional(valor,1);
 }
+
+const Complejo Real::toComplejo() const
+{
+  try
+  {
+    return Complejo(valor,0);
+  }
+  catch(int e)
+  {
+    cout << "Se pierde presición al intentar pasar de un real a complejo." << endl;
+  }
+}
 //Escribe una Numero al flujo sout
 ostream& Real::toStream(ostream& sout) const
 {
@@ -58,10 +71,24 @@ ostream& Real::toStream(ostream& sout) const
 //Lee un Numero desde flujo sin
 istream& Real::fromStream(istream& sin)
 {
-    float auxiliar;
-    sin >> auxiliar;
-    set_dato(auxiliar);
-    return sin;
+    try
+    {
+      if(sin != NULL)
+      {
+        float auxiliar;
+        sin >> auxiliar;
+        set_dato(auxiliar);
+        return sin;
+      }
+      else
+      {
+        throw 1;
+      }
+    }
+    catch(int e)
+    {
+      cout << "Ha ocurrido una excepcion. Nº excepcion: " << e << endl;
+    }
 }
 
 
@@ -86,5 +113,20 @@ Numero& Real::operator*(const Numero &b) const
 Numero& Real::operator/(const Numero &b) const
 {
     Real auxiliar = b.toReal();
-    return *(new Real(valor/auxiliar.valor));
+    try
+    {
+      if(auxiliar.valor == 0)
+      {
+        throw 1;
+      }
+      else
+      {
+        return *(new Real(valor/auxiliar.valor));
+      }
+    }
+    catch(int e)
+    {
+      cerr << "Excepcion- Se esta intentando dividir por cero. Nº Excepcion: " << e << endl;
+      exit(-1);
+    }
 }

@@ -1,6 +1,7 @@
 #include "racional.h"
 #include "real.h"
 #include "entero.h"
+#include "complejo.h"
 
 #include <iostream>
 #include <cstdlib>
@@ -16,9 +17,24 @@ Racional::Racional()
 
 Racional::Racional(d_racional num_,d_racional den_)
 {
-	numerador = num_;
-	if(den_!=0) //Try catch
-		denominador = den_;
+	try
+	{
+		if(den_ == 0)
+		{
+			throw 10;
+		}
+		else
+		{
+			numerador = num_;
+			denominador = den_;
+		}
+	}
+	catch(int e)
+	{
+			cerr << "Constructor de Racional con denominador = 0. Nº excepcion: " << e << endl;
+			exit(-1);
+	}
+
 }
 Racional::~Racional()
 {}
@@ -73,6 +89,14 @@ const Racional Racional::toRacional() const
   	return Racional(*this);
 }
 
+const Complejo Racional::toComplejo() const
+{
+		cout << "Racional to complejo" << endl;
+		float auxiliar = numerador / denominador;
+		cout << "Auxiliar: " << auxiliar << "=> numerador/denominador: " << numerador << "/" << denominador << "=>" << (numerador/denominador) << endl;
+  	return Complejo(auxiliar,0);
+}
+
 Numero& Racional::operator+(const Numero &b) const
 {
     Racional auxiliar = b.toRacional();
@@ -95,8 +119,8 @@ Numero& Racional::operator*(const Numero &b) const
 
 Numero& Racional::operator/(const Numero &b) const
 {
-    Racional auxiliar = b.toRacional();
-    return *(new Racional(numerador*auxiliar.get_denominador(),denominador*auxiliar.get_numerador()));
+			Racional auxiliar = b.toRacional();
+			return *(new Racional(numerador*auxiliar.get_denominador(),denominador*auxiliar.get_numerador()));
 }
 
 //Escribe una Numero al flujo sout
