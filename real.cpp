@@ -1,5 +1,7 @@
 #include "real.h"
 #include "entero.h"
+#include "racional.h"
+
 #include <cstdlib>
 #include <assert.h>
 
@@ -36,11 +38,16 @@ const Real Real::toReal() const
 
 const Entero Real::toEntero() const
 {
-    cout << "This->valor:" << this->valor << endl;
+    //cout << "This->valor:" << this->valor << endl;
     Entero auxiliar(this->valor);
     return auxiliar;
 }
 
+const Racional Real::toRacional() const
+{
+  //try catch --> El numerador pierde precisión pasando de real a entero
+  return Racional(valor,1);
+}
 //Escribe una Numero al flujo sout
 ostream& Real::toStream(ostream& sout) const
 {
@@ -66,18 +73,18 @@ Numero& Real::operator+(const Numero &b) const
 
 Numero& Real::operator-(const Numero &b) const
 {
-    /*Real auxiliar = b.toReal();
-    return *(new Real(valor-auxiliar.valor));*/
+    Real auxiliar = b.toReal();
+    return *(new Real(valor-auxiliar.valor));
 }
 
 Numero& Real::operator*(const Numero &b) const
 {
-    /*Real auxiliar = b.toReal();
-    return *(new Real(valor*auxiliar.valor));*/
+    Real auxiliar = b.toReal();
+    return *(new Real(valor*auxiliar.valor));
 }
 
 Numero& Real::operator/(const Numero &b) const
 {
-/*    Real auxiliar = b.toReal();
-    return *(new Real(valor/auxiliar.valor));*/
+    Real auxiliar = b.toReal();
+    return *(new Real(valor/auxiliar.valor));
 }

@@ -1,4 +1,7 @@
 #include "entero.h"
+#include "real.h"
+#include "racional.h"
+
 #include <cstdlib>
 #include <assert.h>
 
@@ -36,6 +39,11 @@ const Real Entero::toReal() const
 {
     Real auxiliar(this->valor);
     return auxiliar;
+}
+
+const Racional Entero::toRacional() const
+{
+    return Racional(this->valor,1);
 }
 
 //Escribe una Numero al flujo sout

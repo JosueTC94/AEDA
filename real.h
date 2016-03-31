@@ -7,6 +7,9 @@
 
 using namespace std;
 
+class Entero;
+class Racional;
+
 class Real: public Numero
 {
 
@@ -25,7 +28,7 @@ class Real: public Numero
     //Devuelve una copia del Número actual en el tipo Real
     const Entero toEntero() const;
     const Real toReal() const;
-    //const Racional toRacional() const;
+    const Racional toRacional() const;
     //const Complejo toComplejo() const;
 
 

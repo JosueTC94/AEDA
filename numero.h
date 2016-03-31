@@ -7,9 +7,9 @@
 using namespace std;
 
 //class Complejo;
-//class Racional;
 class Entero;
 class Real;
+class Racional;
 
 class Numero
 {
@@ -18,13 +18,13 @@ class Numero
 
     virtual const Entero toEntero() const = 0;
     virtual const Real toReal() const = 0;
+    virtual const Racional toRacional() const = 0;
 
     virtual Numero& operator+(const Numero &b) const = 0;
     virtual Numero& operator-(const Numero &b) const = 0;
     virtual Numero& operator/(const Numero &b) const = 0;
     virtual Numero& operator*(const Numero &b) const = 0;
 
-    //virtual const Racional toRacional() const =0;
     //virtual const Complejos toComplejo() const=0;
 
     //Escribe una Numero al flujo sout
