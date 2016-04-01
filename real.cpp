@@ -3,8 +3,8 @@
 #include "racional.h"
 #include "complejo.h"
 
+#include <iostream>
 #include <cstdlib>
-#include <assert.h>
 
 using namespace std;
 
@@ -39,9 +39,16 @@ const Real Real::toReal() const
 
 const Entero Real::toEntero() const
 {
-    //cout << "This->valor:" << this->valor << endl;
-    Entero auxiliar(this->valor);
-    return auxiliar;
+    try
+    {
+      throw 5;
+    }
+    catch(int e)
+    {
+      //cout << "Perdiendo precision al pasar de real a entero. Nº Excepcion: " << e << endl;
+      Entero auxiliar(this->valor);
+      return auxiliar;
+    }
 }
 
 const Racional Real::toRacional() const
@@ -54,11 +61,12 @@ const Complejo Real::toComplejo() const
 {
   try
   {
-    return Complejo(valor,0);
+    throw 6;
   }
   catch(int e)
   {
-    cout << "Se pierde presición al intentar pasar de un real a complejo." << endl;
+    //cout << "Se pierde presición al intentar pasar de un real a complejo. Nº excepcion: " << e << endl;
+    return Complejo(valor,0);
   }
 }
 //Escribe una Numero al flujo sout
@@ -94,25 +102,33 @@ istream& Real::fromStream(istream& sin)
 
 Numero& Real::operator+(const Numero &b) const
 {
+    cout << "Transformo " << b;
     Real auxiliar = b.toReal();
+    cout << " en " << auxiliar << endl;
     return *(new Real(valor+auxiliar.valor));
 }
 
 Numero& Real::operator-(const Numero &b) const
 {
+    cout << "Transformo " << b;
     Real auxiliar = b.toReal();
+    cout << " en " << auxiliar << endl;
     return *(new Real(valor-auxiliar.valor));
 }
 
 Numero& Real::operator*(const Numero &b) const
 {
+    cout << "Transformo " << b;
     Real auxiliar = b.toReal();
+    cout << " en " << auxiliar << endl;
     return *(new Real(valor*auxiliar.valor));
 }
 
 Numero& Real::operator/(const Numero &b) const
 {
+    cout << "Transformo " << b;
     Real auxiliar = b.toReal();
+    cout << " en " << auxiliar << endl;
     try
     {
       if(auxiliar.valor == 0)

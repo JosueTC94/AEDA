@@ -4,7 +4,6 @@
 #include "complejo.h"
 
 #include <cstdlib>
-#include <assert.h>
 
 using namespace std;
 
@@ -70,25 +69,33 @@ istream& Entero::fromStream(istream& sin)
 
 Numero& Entero::operator+(const Numero &b) const
 {
+    cout << "Transformo " << b;
     Entero auxiliar = b.toEntero();
+    cout << " en " << auxiliar << endl;
     return *(new Entero(valor+auxiliar.valor));
 }
 
 Numero& Entero::operator-(const Numero &b) const
 {
+    cout << "Transformo " << b;
     Entero auxiliar = b.toEntero();
+    cout << " en " << auxiliar << endl;
     return *(new Entero(valor-auxiliar.valor));
 }
 
 Numero& Entero::operator*(const Numero &b) const
 {
+    cout << "Transformo " << b;
     Entero auxiliar = b.toEntero();
+    cout << " en " << auxiliar << endl;
     return *(new Entero(valor*auxiliar.valor));
 }
 
 Numero& Entero::operator/(const Numero &b) const
 {
+    cout << "Transformo " << b;
     Entero auxiliar = b.toEntero();
+    cout << " en " << auxiliar << endl;
     try
     {
       if(auxiliar.valor == 0)
@@ -103,5 +110,6 @@ Numero& Entero::operator/(const Numero &b) const
     catch(int e)
     {
        cerr << "Excepción nº " << e << ". Se divide por 0." << endl;
+       exit(-1);
     }
 }

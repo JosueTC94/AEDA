@@ -5,7 +5,6 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <assert.h>
 
 using namespace std;
 
@@ -91,7 +90,7 @@ const Racional Racional::toRacional() const
 
 const Complejo Racional::toComplejo() const
 {
-		float auxiliar = numerador / denominador;
+		int auxiliar = numerador / denominador;
   	return Complejo(auxiliar,0);
 }
 
@@ -130,7 +129,7 @@ Numero& Racional::operator/(const Numero &b) const
 //Escribe una Numero al flujo sout
 ostream& Racional::toStream(ostream& sout) const
 {
-		sout << numerador << "/" << denominador << endl;
+		sout << numerador << "/" << denominador;
     return sout;
 }
 

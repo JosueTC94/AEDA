@@ -5,8 +5,6 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <assert.h>
-
 
 
 Complejo::Complejo()
@@ -77,19 +75,23 @@ const Complejo Complejo::toComplejo() const
 Numero& Complejo::operator+(const Numero &b) const
 {
     Complejo auxiliar = b.toComplejo();
-		cout << "Auxiliar: " << auxiliar.get_real() << ", Imaginaria: " << auxiliar.get_imaginaria() << endl;
+		//cout << "Auxiliar: " << auxiliar.get_real() << ", Imaginaria: " << auxiliar.get_imaginaria() << endl;
     return *(new Complejo(real+auxiliar.get_real(),imaginaria+auxiliar.get_imaginaria()));
 }
 
 Numero& Complejo::operator-(const Numero &b) const
 {
+		cout << "Transformo: " << b;
     Complejo auxiliar = b.toComplejo();
+		cout << " en " << auxiliar << endl;
     return *(new Complejo(real-auxiliar.get_real(),imaginaria-auxiliar.get_imaginaria()));
 }
 
 Numero& Complejo::operator*(const Numero &b) const
 {
+		cout << "Transformo: " << b;
 		Complejo auxiliar = b.toComplejo();
+		cout << " en " << auxiliar << endl;
     float real = real*auxiliar.get_real()-imaginaria*auxiliar.get_imaginaria();
     float imag = real*auxiliar.get_imaginaria()+imaginaria*auxiliar.get_real();
     return *(new Complejo(real,imag));
@@ -97,7 +99,9 @@ Numero& Complejo::operator*(const Numero &b) const
 
 Numero& Complejo::operator/(const Numero &b) const
 {
+		cout << "Transformo: " << b;
     Complejo auxiliar = b.toComplejo();
+		cout << " en " << auxiliar << endl;
     return *(new Complejo(real/auxiliar.get_real(),imaginaria/auxiliar.get_imaginaria()));
 }
 
