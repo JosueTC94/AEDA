@@ -21,7 +21,7 @@ Racional::Racional(d_racional num_,d_racional den_)
 	{
 		if(den_ == 0)
 		{
-			throw 10;
+			throw 2;
 		}
 		else
 		{
@@ -91,36 +91,40 @@ const Racional Racional::toRacional() const
 
 const Complejo Racional::toComplejo() const
 {
-		cout << "Racional to complejo" << endl;
 		float auxiliar = numerador / denominador;
-		cout << "Auxiliar: " << auxiliar << "=> numerador/denominador: " << numerador << "/" << denominador << "=>" << (numerador/denominador) << endl;
   	return Complejo(auxiliar,0);
 }
 
 Numero& Racional::operator+(const Numero &b) const
 {
+		cout << "Transformo " << b;
     Racional auxiliar = b.toRacional();
-		//Minimo común múltiplo
-    return *(new Racional(numerador+auxiliar.get_numerador(),denominador+auxiliar.get_denominador()));
+		cout << " en racional: " << auxiliar << endl;
+    return *(new Racional(numerador*auxiliar.get_denominador() + auxiliar.get_numerador()*denominador,denominador*auxiliar.get_denominador()));
 }
 
 Numero& Racional::operator-(const Numero &b) const
 {
+		cout << "Transformo " << b;
     Racional auxiliar = b.toRacional();
-		//Mínimo común múltiplo
-    return *(new Racional(numerador-auxiliar.get_numerador(),denominador-auxiliar.get_denominador()));
+		cout << " en racional: " << auxiliar << endl;
+    return *(new Racional(numerador*auxiliar.get_denominador() - auxiliar.get_numerador()*denominador,denominador*auxiliar.get_denominador()));
 }
 
 Numero& Racional::operator*(const Numero &b) const
 {
+		cout << "Transformo " << b;
 		Racional auxiliar = b.toRacional();
+		cout << " en racional: " << auxiliar << endl;
 		return *(new Racional(numerador*auxiliar.get_numerador(),denominador*auxiliar.get_denominador()));
 }
 
 Numero& Racional::operator/(const Numero &b) const
 {
-			Racional auxiliar = b.toRacional();
-			return *(new Racional(numerador*auxiliar.get_denominador(),denominador*auxiliar.get_numerador()));
+		cout << "Transformo " << b;
+		Racional auxiliar = b.toRacional();
+		cout << " en racional: " << auxiliar << endl;
+		return *(new Racional(numerador*auxiliar.get_denominador(),denominador*auxiliar.get_numerador()));
 }
 
 //Escribe una Numero al flujo sout

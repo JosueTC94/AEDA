@@ -82,7 +82,7 @@ istream& Real::fromStream(istream& sin)
       }
       else
       {
-        throw 1;
+        throw 3;
       }
     }
     catch(int e)
@@ -117,7 +117,7 @@ Numero& Real::operator/(const Numero &b) const
     {
       if(auxiliar.valor == 0)
       {
-        throw 1;
+        throw 4;
       }
       else
       {

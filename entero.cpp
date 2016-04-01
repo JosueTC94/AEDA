@@ -89,5 +89,19 @@ Numero& Entero::operator*(const Numero &b) const
 Numero& Entero::operator/(const Numero &b) const
 {
     Entero auxiliar = b.toEntero();
-    return *(new Entero(valor/auxiliar.valor));
+    try
+    {
+      if(auxiliar.valor == 0)
+      {
+        throw 1;
+      }
+      else
+      {
+        return *(new Entero(valor/auxiliar.valor));
+      }
+    }
+    catch(int e)
+    {
+       cerr << "Excepción nº " << e << ". Se divide por 0." << endl;
+    }
 }

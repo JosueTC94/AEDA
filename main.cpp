@@ -1,16 +1,9 @@
-//#include "pila.h"
-//#include "lista.h"
-//#include "cola.h"
-//#include "vector.h"
-//#include "calculadora.h"
-//#include "complejos.h"
-//#include "real.h"
+#include "pila.h"
 #include "numero.h"
 #include "entero.h"
 #include "real.h"
 #include "racional.h"
 #include "complejo.h"
-
 #include <iostream>
 #include <cstdlib>
 #include <stdio.h>
@@ -19,7 +12,6 @@
 #include <string>
 
 using namespace std;
-
 
 
 int main () {
@@ -39,8 +31,8 @@ int main () {
   cout << "Resultado: " << *n2 - *n1 << endl;
   cout << "3.- Multiplicando 4/3 * 1.2. Debe dar => 4/3" << endl;
   cin.get();
-  Numero* n3 = new Real(0.0);
-  Numero* n4 = new Racional(1,1);
+  Numero* n3 = new Racional(4,3);
+  Numero* n4 = new Real(1.2);
   cout << "Resultado: " << *n3 * *n4 << endl;
   cout << "4.- Restando 1 + 3i - 5/3. Debe dar => 0 + 3i" << endl;
   cin.get();
@@ -57,7 +49,59 @@ int main () {
   Numero* n9 = new Real(8.2);
   Numero* n10 = new Entero(4);
   cout << "Resultado: " << *n9 / *n10 << endl;
-  cout << "Probando las excepciones. Try/Catch " << endl;
+  cout << "7.- Dividiendo 7/9 y 3 + 5i. Debe dar => 21/9" << endl;
+  cin.get();
+  Numero* n11 = new Racional(7,9);
+  Numero* n12 = new Complejo(3,5);
+  cout << "Resultado: " << *n11 / *n12 << endl;
+  cout << "8.- Restando 1.7 - 2 + 4i. Debe dar => -0.3" << endl;
+  cin.get();
+  Numero* n13 = new Real(1.7);
+  Numero* n14 = new Complejo(2,4);
+  cout << "Resultado: " << *n13 - *n14 << endl;
+  cout << "9.- Restamos 3/2 a 5.6. Debe dar => -2/6" << endl;
+  cin.get();
+  Numero* n15 = new Racional(3,2);
+  Numero* n16 = new Real(5.6);
+  cout << "Resultado: " << *n15 - *n16 << endl;
 
+/*
+  cout << "CALCULADORAAAAAAA" << endl;
+  cout << "Introduzca una expresion: ";
+  cout.flush();
+  pila<Numero*> p1;
+  while(cin.peek() != EOF && cin.peek() != '\n')
+  {
+    cin >> std::ws;  // Gestión de los espacios en blanco
+    char c = cin.peek();  // carácter peek
+  //  cout << "Peek->" << cin.peek() << endl;
+    if(c == '+')
+    {
+        Numero* n1;
+        Numero* n2;
+        n1 = p1.pop();
+        n2 = p1.pop();
+        p1.push(*n1+*n2);
+    }
+    else
+    {
+      switch(c)
+      {
+        case 'e':
+                  int aux = 0;
+                  cin >> aux;
+                  Numero* e = new Entero(aux);
+                  p1.push(e);
+              break;
+        case 'f':
+              break;
+        case 'r':
+              break;
+        case 'c':
+              break;
+        default:
+      }
+    }
+  }*/
   return 0;
 }
