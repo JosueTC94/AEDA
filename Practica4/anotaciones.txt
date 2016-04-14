@@ -1,0 +1,31 @@
+template <class TClave>
+class Tabla Hash{
+    private:
+        Celda<TClave> *pCeldas;
+        
+        
+        
+        
+template<class TClave>
+class Celda
+{
+private:
+    Vector *pV,
+    int nCeldas;
+public:
+    bool buscar(int clave& h,int& pos)
+    bool insertar(const TClave)
+    bool 
+    
+    
+anotaciones tutoria:
+-Cuando se activa la exploración es cuando no se encuentra hueco para insertar el dni así que busco el siguiente más factible.
+-Factor de carga: Cuanto de llena va a estar la tabla.
+-Estudio de comparaciones:
+    tabla vacia -> no colision
+    tabla casi llena -> probabilidad de más colisiones
+    contador --> se suma 1 al contador cada vez que se produzca una comparación de claves.
+- En el primer ejercicio de hashing, sumo el intento en TÉCNICA LINEAL Y CUADRÁTICA. En el caso de que se me produzca una colisión, activo exploración doble:
+    -suma de los dígitos
+
+-De cara a la practica, pedimos el numero de celdas. Pedimos el tamaño de la tabla por teclado. 
